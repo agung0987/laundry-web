@@ -18,7 +18,7 @@ class KategoriResource extends Resource
     protected static ?string $model = Kategori::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
-
+    
     public static function form(Form $form): Form
     {
         return $form
@@ -34,6 +34,7 @@ class KategoriResource extends Resource
                         'aktif' => 'Aktif',
                         'tidak aktif' => 'Tidak Aktif',
                     ]),
+                    
             ]);
     }
 
@@ -60,11 +61,6 @@ class KategoriResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
-            ])
-            ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
-                ]),
             ]);
     }
 
