@@ -4,7 +4,6 @@ namespace App\Console\Commands;
 
 use App\Models\User;
 use Illuminate\Console\Command;
-use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Hash;
 
 class CreateFilamentUser extends Command
@@ -32,8 +31,6 @@ class CreateFilamentUser extends Command
         $email = $this->ask('Enter the email');
         $password = $this->ask('Enter the password');
 
-        $roles = Role::pluck('name')->toArray();
-        $role = $this->choice('Select the role', $roles);
 
         $status = $this->choice('Select the status', ['aktif', 'tidak_aktif']);
 
@@ -41,11 +38,9 @@ class CreateFilamentUser extends Command
             'name' => $name,
             'email' => $email,
             'password' => Hash::make($password),
-            'role' => $role,
             'status' => $status,
         ]);
 
-        $user->assignRole($role);
 
         $this->info('User created successfully');
     }

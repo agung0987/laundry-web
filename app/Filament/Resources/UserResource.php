@@ -8,13 +8,11 @@ use Filament\Tables;
 use Filament\Forms\Form;
 use Filament\Tables\Table;
 use Filament\Resources\Resource;
-use Spatie\Permission\Models\Role;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\SelectFilter;
 use Illuminate\Database\Eloquent\Builder;
 use App\Filament\Resources\UserResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
-use App\Filament\Resources\UserResource\RelationManagers;
 
 class UserResource extends Resource
 {
@@ -22,7 +20,7 @@ class UserResource extends Resource
 
     // protected static ?string $modelPolicy = UserPolicy::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-user';
 
     public static function form(Form $form): Form
     {
@@ -37,9 +35,6 @@ class UserResource extends Resource
                     ->password()
                     ->required()
                     ->minLength(8),
-                Forms\Components\Select::make('roles')
-                    ->relationship('roles', 'name')
-                    ->multiple(),
             ]);
     }
 
@@ -55,11 +50,6 @@ class UserResource extends Resource
                 TextColumn::make('email')
                     ->sortable()
                     ->searchable(),
-                TextColumn::make('roles.name')
-                    ->label('Role')
-                    ->sortable()
-                    ->searchable()
-                    ->badge(),
                 TextColumn::make('created_at')
                     ->dateTime('d-m-Y H:i'),
             ])
