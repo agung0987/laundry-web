@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Filament\Resources\KategoriResource\Pages;
+namespace App\Filament\Resources\PengeluaranResource\Pages;
 
-use App\Filament\Resources\KategoriResource;
+use App\Filament\Resources\PengeluaranResource;
 use Filament\Actions;
 use Filament\Resources\Pages\CreateRecord;
 
-class CreateKategori extends CreateRecord
+class CreatePengeluaran extends CreateRecord
 {
-    protected static string $resource = KategoriResource::class;
+    protected static string $resource = PengeluaranResource::class;
     protected static bool $canCreateAnother = false;
     protected function getRedirectUrl(): string
     {
