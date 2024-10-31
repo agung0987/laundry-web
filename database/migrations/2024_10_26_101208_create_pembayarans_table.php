@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('pembayarans', function (Blueprint $table) {
             $table->id();
             $table->string('nama');
-            $table->enum('status', ['aktif', 'tidak_aktif'])->default('aktif');
+            $table->boolean('status')->default(true);
             $table->timestamps();
         });
     }

@@ -17,7 +17,7 @@ class PengeluaranResource extends Resource
 {
     protected static ?string $model = Pengeluaran::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-document-minus';
 
     public static function form(Form $form): Form
     {
@@ -27,10 +27,10 @@ class PengeluaranResource extends Resource
                     ->required()
                     ->maxLength(255),
                 Forms\Components\Select::make('status')
-                    ->required()
+                    ->label('Status')
                     ->options([
-                        'aktif' => 'Aktif',
-                        'tidak_aktif' => 'Tidak Aktif',
+                        1 => 'Aktif',
+                        0 => 'Tidak Aktif',
                     ]),
             ]);
     }
