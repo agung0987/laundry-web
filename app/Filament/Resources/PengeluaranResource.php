@@ -17,6 +17,8 @@ class PengeluaranResource extends Resource
 {
     protected static ?string $model = Pengeluaran::class;
 
+    protected static ?string $navigationGroup = 'Master';
+
     protected static ?string $navigationIcon = 'heroicon-o-document-minus';
 
     public static function form(Form $form): Form
@@ -59,12 +61,14 @@ class PengeluaranResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
-            ])
-            ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
-                ]),
+                Tables\Actions\DeleteAction::make(),
             ]);
+            // ->bulkActions([
+            //     Tables\Actions\BulkActionGroup::make([
+            //         Tables\Actions\DeleteBulkAction::make(),
+            //         Tables\Actions\DeleteAction::make(),
+            //     ]),
+            // ]);
     }
 
     public static function getRelations(): array

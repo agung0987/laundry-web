@@ -17,6 +17,8 @@ class LayananResource extends Resource
 {
     protected static ?string $model = Layanan::class;
 
+    protected static ?string $navigationGroup = 'Master';
+
     protected static ?string $navigationIcon = 'heroicon-o-cog';
 
     public static function form(Form $form): Form
@@ -67,12 +69,13 @@ class LayananResource extends Resource
         ])
         ->actions([
             Tables\Actions\EditAction::make(),
-        ])
-        ->bulkActions([
-            Tables\Actions\BulkActionGroup::make([
-                Tables\Actions\DeleteBulkAction::make(),
-            ]),
+            Tables\Actions\DeleteAction::make(),
         ]);
+        // ->bulkActions([
+        //     Tables\Actions\BulkActionGroup::make([
+        //         Tables\Actions\DeleteBulkAction::make(),
+        //     ]),
+        // ]);
     }
 
     public static function getRelations(): array

@@ -17,6 +17,8 @@ class PengerjaanResource extends Resource
 {
     protected static ?string $model = Pengerjaan::class;
 
+    protected static ?string $navigationGroup = 'Master';
+
     protected static ?string $navigationIcon = 'heroicon-o-arrow-path';
 
     public static function form(Form $form): Form
@@ -72,12 +74,13 @@ class PengerjaanResource extends Resource
         ])
         ->actions([
             Tables\Actions\EditAction::make(),
-        ])
-        ->bulkActions([
-            Tables\Actions\BulkActionGroup::make([
-                Tables\Actions\DeleteBulkAction::make(),
-            ]),
+            Tables\Actions\DeleteAction::make(),
         ]);
+        // ->bulkActions([
+        //     Tables\Actions\BulkActionGroup::make([
+        //         Tables\Actions\DeleteBulkAction::make(),
+        //     ]),
+        // ]);
     }
 
     public static function getRelations(): array
