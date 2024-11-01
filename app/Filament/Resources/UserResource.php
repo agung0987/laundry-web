@@ -19,6 +19,8 @@ class UserResource extends Resource
     // protected static ?string $model = User::class;
 
     protected static bool $shouldRegisterNavigation = false;
+    // protected static bool $canCreateAnother = false;
+
 
     // protected static ?string $navigationGroup = 'Master';
 

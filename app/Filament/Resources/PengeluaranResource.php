@@ -19,6 +19,8 @@ class PengeluaranResource extends Resource
 
     protected static ?string $navigationGroup = 'Master';
 
+    protected static ?int $navigationSort = 1;
+
     protected static ?string $navigationIcon = 'heroicon-o-document-minus';
 
     public static function form(Form $form): Form

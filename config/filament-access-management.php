@@ -32,7 +32,7 @@ return [
             /**
              * Using db based filament navigation if true.
              */
-            'enabled' => false,
+            'enabled' => true,
             /**
              * Table name db based filament navigation.
              */
@@ -51,6 +51,13 @@ return [
             'role' => 'heroicon-o-user-group',
             'permission' => 'heroicon-o-lock-closed',
             'menu' => 'heroicon-o-bars-3-bottom-left',
+        ],
+        'navigationSort' => [
+            'default' => 1,
+            'user' => 2,
+            'role' => 3,
+            'permission' => 4,
+            'menu' => 5,
         ],
         'pages' => [
             Pages\Menu::class,
@@ -149,6 +156,6 @@ return [
         'navigation' => [
             'expiration_time' => \DateInterval::createFromDateString('24 hours'),
             'key' => 'filament_navigation',
-        ]
+        ],
     ],
 ];
