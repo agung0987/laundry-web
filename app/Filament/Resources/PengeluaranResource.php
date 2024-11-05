@@ -30,6 +30,9 @@ class PengeluaranResource extends Resource
                 Forms\Components\TextInput::make('nama')
                     ->required()
                     ->maxLength(255),
+                Forms\Components\TextInput::make('tarif')
+                    ->required()
+                    ->numeric(),
                 Forms\Components\Select::make('status')
                     ->label('Status')
                     ->options([
@@ -49,6 +52,9 @@ class PengeluaranResource extends Resource
                 Tables\Columns\TextColumn::make('status')
                     ->formatStateUsing(fn(string $state): string => $state === 'aktif' ? 'Aktif' : 'Tidak Aktif')
                     ->searchable(),
+                Tables\Columns\TextColumn::make('tarif')
+                    ->numeric()
+                    ->sortable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
@@ -63,14 +69,14 @@ class PengeluaranResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
-                Tables\Actions\DeleteAction::make(),
+                // Tables\Actions\DeleteAction::make(),
             ]);
-            // ->bulkActions([
-            //     Tables\Actions\BulkActionGroup::make([
-            //         Tables\Actions\DeleteBulkAction::make(),
-            //         Tables\Actions\DeleteAction::make(),
-            //     ]),
-            // ]);
+        // ->bulkActions([
+        //     Tables\Actions\BulkActionGroup::make([
+        //         Tables\Actions\DeleteBulkAction::make(),
+        //         Tables\Actions\DeleteAction::make(),
+        //     ]),
+        // ]);
     }
 
     public static function getRelations(): array
