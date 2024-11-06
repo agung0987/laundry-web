@@ -19,7 +19,7 @@ class Pelayanan extends Model
         'biaya',
         'penginput',
         'no_pesanan',
-        'status',
+        // 'status',
     ];
 
     protected static function booted()

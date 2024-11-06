@@ -31,8 +31,8 @@ class TarifResource extends Resource
                 Forms\Components\TextInput::make('tarif')
                     ->required()
                     ->numeric(),
-                Forms\Components\Toggle::make('status')
-                    ->required(),
+                // Forms\Components\Toggle::make('status')
+                //     ->required(),
             ]);
     }
 
@@ -45,8 +45,8 @@ class TarifResource extends Resource
                 Tables\Columns\TextColumn::make('tarif')
                     ->numeric()
                     ->sortable(),
-                Tables\Columns\IconColumn::make('status')
-                    ->boolean(),
+                // Tables\Columns\IconColumn::make('status')
+                //     ->boolean(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()

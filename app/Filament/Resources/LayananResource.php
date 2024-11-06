@@ -53,8 +53,8 @@ class LayananResource extends Resource
                 ->sortable(),
             Tables\Columns\TextColumn::make('nama')
                 ->searchable(),
-            Tables\Columns\IconColumn::make('status')
-            ->boolean(),
+            // Tables\Columns\IconColumn::make('status')
+            // ->boolean(),
             Tables\Columns\TextColumn::make('created_at')
                 ->dateTime()
                 ->sortable()
@@ -84,9 +84,9 @@ class LayananResource extends Resource
                                 ->label('Tarif')
                                 ->numeric()
                                 ->required(),
-                            Forms\Components\Toggle::make('status')
-                                ->label('Aktif')
-                                ->required(),
+                            // Forms\Components\Toggle::make('status')
+                            //     ->label('Aktif')
+                            //     ->required(),
                         ])
                         ->defaultItems(1)
                         ->afterStateHydrated(function ($state, $set, $record) {

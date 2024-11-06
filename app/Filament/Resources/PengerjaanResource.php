@@ -39,7 +39,7 @@ class PengerjaanResource extends Resource
             Forms\Components\TextInput::make('tarif')
                 ->required()
                 ->numeric(),
-                Forms\Components\Toggle::make('status')
+                // Forms\Components\Toggle::make('status')
         ]);
     }
 
@@ -56,8 +56,8 @@ class PengerjaanResource extends Resource
             Tables\Columns\TextColumn::make('tarif')
                 ->numeric()
                 ->sortable(),
-                Tables\Columns\IconColumn::make('status')
-                ->boolean(),
+                // Tables\Columns\IconColumn::make('status')
+                // ->boolean(),
             Tables\Columns\TextColumn::make('created_at')
                 ->dateTime()
                 ->sortable()

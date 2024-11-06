@@ -14,7 +14,7 @@ class Pengerjaan extends Model
         'id_layanan',
         'pengerjaan',
         'tarif',
-        'status',
+        // 'status',
     ];
 
     public function layanan(): BelongsTo

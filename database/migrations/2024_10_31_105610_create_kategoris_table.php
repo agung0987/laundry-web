@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('nama');
             $table->string('satuan');
-            $table->boolean('status')->default(true);
+            // $table->boolean('status')->default(true);
             $table->timestamps();
         });
     }

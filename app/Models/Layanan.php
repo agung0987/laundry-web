@@ -14,7 +14,7 @@ class Layanan extends Model
         'id_kategori',
         'nama',
         'harga',
-        'status',
+        // 'status',
     ];
 
     public function kategori(): BelongsTo

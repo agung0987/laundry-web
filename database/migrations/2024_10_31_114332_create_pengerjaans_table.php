@@ -16,7 +16,7 @@ return new class extends Migration
             $table->foreignId('id_layanan')->constrained('layanans')->cascadeOnDelete();
             $table->string('pengerjaan');
             $table->integer('tarif');
-            $table->boolean('status')->default(true);
+            // $table->boolean('status')->default(true);
             $table->timestamps();
         });
     }

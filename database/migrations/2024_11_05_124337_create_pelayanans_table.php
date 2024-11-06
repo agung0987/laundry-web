@@ -19,7 +19,7 @@ return new class extends Migration
             $table->integer('biaya');
             $table->string('penginput');
             $table->string('no_pesanan');
-            $table->boolean('status')->default(true);
+            // $table->boolean('status')->default(true);
             $table->timestamps();
         });
     }

@@ -14,7 +14,7 @@ class Tarif extends Model
         'id_layanan',
         'lama_pengerjaan',
         'tarif',
-        'status',
+        // 'status',
     ];
 
     // public function layanan()

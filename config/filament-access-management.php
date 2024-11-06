@@ -63,18 +63,18 @@ return [
             // Pages\Menu::class,
         ],
         'resources' => [
-            Resources\UserResource::class,
-            Resources\RoleResource::class,
-            Resources\PermissionResource::class,
+            // Resources\UserResource::class,
+            // Resources\RoleResource::class,
+            // Resources\PermissionResource::class,
         ]
     ],
     'roles' => [
         'super-admin' => [
             'name' => 'super-admin',
             'role_permissions' => [
-                'users.*',
-                'roles.*',
-                'permissions.*',
+                // 'users.*',
+                // 'roles.*',
+                // 'permissions.*',
                 // 'menu.*',
             ],
         ],
@@ -87,23 +87,23 @@ return [
      */
 
     'permissions' => [
-        'users.*' => '/admin/users*',
-        'users.viewAny' => '/admin/users',
-        'users.view' => '/admin/users/*',
-        'users.create' => '/admin/users/create',
-        'users.update' => '/admin/users/*/edit',
+        // 'users.*' => '/admin/users*',
+        // 'users.viewAny' => '/admin/users',
+        // 'users.view' => '/admin/users/*',
+        // 'users.create' => '/admin/users/create',
+        // 'users.update' => '/admin/users/*/edit',
 
-        'roles.*' => '/admin/roles*',
-        'roles.viewAny' => '/admin/users',
-        'roles.view' => '/admin/users/*',
-        'roles.create' => '/admin/users/create',
-        'roles.update' => '/admin/users/*/edit',
+        // 'roles.*' => '/admin/roles*',
+        // 'roles.viewAny' => '/admin/users',
+        // 'roles.view' => '/admin/users/*',
+        // 'roles.create' => '/admin/users/create',
+        // 'roles.update' => '/admin/users/*/edit',
 
-        'permissions.*' => '/admin/permissions*',
-        'permissions.viewAny' => '/admin/permissions',
-        'permissions.view' => '/admin/permissions/*',
-        'permissions.create' => '/admin/permissions/create',
-        'permissions.update' => '/admin/permissions/*/edit',
+        // 'permissions.*' => '/admin/permissions*',
+        // 'permissions.viewAny' => '/admin/permissions',
+        // 'permissions.view' => '/admin/permissions/*',
+        // 'permissions.create' => '/admin/permissions/create',
+        // 'permissions.update' => '/admin/permissions/*/edit',
 
         // 'menu.*' => '/admin/menu*',
         // 'menu.viewAny' => '/admin/menu',
