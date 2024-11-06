@@ -104,7 +104,7 @@ class LayananResource extends Resource
                             ],
                             [
                                 'tarif' => $tarifData['tarif'],
-                                'status' => $tarifData['status'],
+                                // 'status' => $tarifData['status'],
                             ]
                         );
                     }
