@@ -10,6 +10,7 @@ class CreatePembayaran extends CreateRecord
 {
     protected static string $resource = PembayaranResource::class;
     protected static bool $canCreateAnother = false;
+    protected static ?string $title = 'Buat Status Pembayaran';
     protected function getRedirectUrl(): string
     {
         return $this->getResource()::getUrl('index');

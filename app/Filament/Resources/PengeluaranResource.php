@@ -30,6 +30,10 @@ class PengeluaranResource extends Resource
                 Forms\Components\TextInput::make('nama')
                     ->required()
                     ->maxLength(255),
+                Forms\Components\TextInput::make('tarif')
+                    ->required()
+                    ->numeric(),
+                // Forms\Components\Toggle::make('status'),
             ]);
     }
 
@@ -40,6 +44,12 @@ class PengeluaranResource extends Resource
                 Tables\Columns\TextColumn::make('nama')
                     ->searchable()
                     ->extraAttributes(['class' => 'capitalize']),
+                Tables\Columns\TextColumn::make('tarif')
+                    ->numeric()
+                    ->money('IDR', locale: 'id')
+                    ->sortable(),
+                // Tables\Columns\IconColumn::make('status')
+                //     ->boolean(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()

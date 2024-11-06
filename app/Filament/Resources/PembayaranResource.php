@@ -23,6 +23,8 @@ class PembayaranResource extends Resource
     protected static ?int $navigationSort = 1;
 
     protected static ?string $navigationIcon = 'heroicon-o-document-plus';
+    protected static ?string $navigationLabel = 'Status Pembayaran';
+    
 
     public static function form(Form $form): Form
     {
@@ -31,7 +33,13 @@ class PembayaranResource extends Resource
                 Forms\Components\TextInput::make('nama')
                     ->required()
                     ->maxLength(255),
-                Forms\Components\Toggle::make('status')
+                Forms\Components\Select::make('status')
+                    ->label('Status')
+                    ->required()
+                    ->options([
+                        1 => 'Aktif',
+                        0 => 'Tidak Aktif',
+                    ]),
             ]);
     }
 
@@ -42,8 +50,9 @@ class PembayaranResource extends Resource
                 Tables\Columns\TextColumn::make('nama')
                     ->searchable()
                     ->extraAttributes(['class' => 'capitalize']),
-                Tables\Columns\IconColumn::make('status')
-                    ->boolean(),
+                Tables\Columns\TextColumn::make('status')
+                    ->formatStateUsing(fn(string $state): string => $state == 1 ? 'Aktif' : 'Tidak Aktif')
+                    ->searchable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
@@ -58,7 +67,6 @@ class PembayaranResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
-                Tables\Actions\DeleteAction::make(),
             ]);
             // ->bulkActions([
             //     Tables\Actions\BulkActionGroup::make([
