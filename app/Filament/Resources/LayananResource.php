@@ -39,7 +39,7 @@ class LayananResource extends Resource
                 ->label('Nama Layanan')
                 ->required()
                 ->maxLength(255),
-            Forms\Components\Toggle::make('status')
+            // Forms\Components\Toggle::make('status')
         ]);
     }
 
