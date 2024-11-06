@@ -32,7 +32,7 @@ return [
             /**
              * Using db based filament navigation if true.
              */
-            'enabled' => true,
+            'enabled' => false,
             /**
              * Table name db based filament navigation.
              */
@@ -50,17 +50,17 @@ return [
             'user' => 'heroicon-o-user',
             'role' => 'heroicon-o-user-group',
             'permission' => 'heroicon-o-lock-closed',
-            'menu' => 'heroicon-o-bars-3-bottom-left',
+            // 'menu' => 'heroicon-o-bars-3-bottom-left',
         ],
         'navigationSort' => [
             'default' => 1,
             'user' => 2,
             'role' => 3,
             'permission' => 4,
-            'menu' => 5,
+            // 'menu' => 5,
         ],
         'pages' => [
-            Pages\Menu::class,
+            // Pages\Menu::class,
         ],
         'resources' => [
             Resources\UserResource::class,
@@ -75,7 +75,7 @@ return [
                 'users.*',
                 'roles.*',
                 'permissions.*',
-                'menu.*',
+                // 'menu.*',
             ],
         ],
     ],
@@ -105,11 +105,11 @@ return [
         'permissions.create' => '/admin/permissions/create',
         'permissions.update' => '/admin/permissions/*/edit',
 
-        'menu.*' => '/admin/menu*',
-        'menu.viewAny' => '/admin/menu',
-        'menu.view' => '/admin/menu/*',
-        'menu.create' => '/admin/menu/create',
-        'menu.update' => '/admin/menu/*/edit',
+        // 'menu.*' => '/admin/menu*',
+        // 'menu.viewAny' => '/admin/menu',
+        // 'menu.view' => '/admin/menu/*',
+        // 'menu.create' => '/admin/menu/create',
+        // 'menu.update' => '/admin/menu/*/edit',
     ],
 
     /**

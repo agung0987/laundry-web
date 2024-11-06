@@ -21,6 +21,8 @@ class PengerjaanResource extends Resource
 
     protected static ?int $navigationSort = 1;
 
+    protected static bool $shouldRegisterNavigation = false;
+
     protected static ?string $navigationIcon = 'heroicon-o-arrow-path';
 
     public static function form(Form $form): Form
@@ -37,12 +39,7 @@ class PengerjaanResource extends Resource
             Forms\Components\TextInput::make('tarif')
                 ->required()
                 ->numeric(),
-                Forms\Components\Select::make('status')
-                ->label('Status')
-                ->options([
-                    1 => 'Aktif',
-                    0 => 'Tidak Aktif',
-            ]),
+                Forms\Components\Toggle::make('status')
         ]);
     }
 
@@ -59,9 +56,8 @@ class PengerjaanResource extends Resource
             Tables\Columns\TextColumn::make('tarif')
                 ->numeric()
                 ->sortable(),
-                Tables\Columns\TextColumn::make('status')
-                ->label('Status')
-                ->formatStateUsing(fn ($state) => $state ? 'Aktif' : 'Tidak Aktif'),
+                Tables\Columns\IconColumn::make('status')
+                ->boolean(),
             Tables\Columns\TextColumn::make('created_at')
                 ->dateTime()
                 ->sortable()

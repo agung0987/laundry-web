@@ -21,4 +21,10 @@ class Layanan extends Model
     {
         return $this->belongsTo(Kategori::class,'id_kategori','id');
     }
+
+    public function tarif()
+    {
+        return $this->hasMany(Tarif::class);
+    }
+
 }

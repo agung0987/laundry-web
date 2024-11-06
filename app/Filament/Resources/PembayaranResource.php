@@ -31,12 +31,7 @@ class PembayaranResource extends Resource
                 Forms\Components\TextInput::make('nama')
                     ->required()
                     ->maxLength(255),
-                Forms\Components\Select::make('status')
-                    ->label('Status')
-                    ->options([
-                        1 => 'Aktif',
-                        0 => 'Tidak Aktif',
-                    ]),
+                Forms\Components\Toggle::make('status')
             ]);
     }
 
@@ -47,9 +42,8 @@ class PembayaranResource extends Resource
                 Tables\Columns\TextColumn::make('nama')
                     ->searchable()
                     ->extraAttributes(['class' => 'capitalize']),
-                Tables\Columns\TextColumn::make('status')
-                    ->formatStateUsing(fn(string $state): string => $state === 'aktif' ? 'Aktif' : 'Tidak Aktif')
-                    ->searchable(),
+                Tables\Columns\IconColumn::make('status')
+                    ->boolean(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()

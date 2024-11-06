@@ -2,9 +2,9 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\PengeluaranResource\Pages;
-use App\Filament\Resources\PengeluaranResource\RelationManagers;
-use App\Models\Pengeluaran;
+use App\Filament\Resources\TarifResource\Pages;
+use App\Filament\Resources\TarifResource\RelationManagers;
+use App\Models\Tarif;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -13,23 +13,26 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class PengeluaranResource extends Resource
+class TarifResource extends Resource
 {
-    protected static ?string $model = Pengeluaran::class;
+    protected static ?string $model = Tarif::class;
 
-    protected static ?string $navigationGroup = 'Master';
+    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
-    protected static ?int $navigationSort = 1;
-
-    protected static ?string $navigationIcon = 'heroicon-o-document-minus';
+    protected static bool $shouldRegisterNavigation = false;
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('nama')
+                Forms\Components\TextInput::make('lama_pengerjaan')
                     ->required()
                     ->maxLength(255),
+                Forms\Components\TextInput::make('tarif')
+                    ->required()
+                    ->numeric(),
+                Forms\Components\Toggle::make('status')
+                    ->required(),
             ]);
     }
 
@@ -37,9 +40,13 @@ class PengeluaranResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('nama')
-                    ->searchable()
-                    ->extraAttributes(['class' => 'capitalize']),
+                Tables\Columns\TextColumn::make('lama_pengerjaan')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('tarif')
+                    ->numeric()
+                    ->sortable(),
+                Tables\Columns\IconColumn::make('status')
+                    ->boolean(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
@@ -54,14 +61,12 @@ class PengeluaranResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
-                // Tables\Actions\DeleteAction::make(),
+            ])
+            ->bulkActions([
+                Tables\Actions\BulkActionGroup::make([
+                    Tables\Actions\DeleteBulkAction::make(),
+                ]),
             ]);
-        // ->bulkActions([
-        //     Tables\Actions\BulkActionGroup::make([
-        //         Tables\Actions\DeleteBulkAction::make(),
-        //         Tables\Actions\DeleteAction::make(),
-        //     ]),
-        // ]);
     }
 
     public static function getRelations(): array
@@ -74,9 +79,9 @@ class PengeluaranResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListPengeluarans::route('/'),
-            'create' => Pages\CreatePengeluaran::route('/create'),
-            'edit' => Pages\EditPengeluaran::route('/{record}/edit'),
+            'index' => Pages\ListTarifs::route('/'),
+            'create' => Pages\CreateTarif::route('/create'),
+            'edit' => Pages\EditTarif::route('/{record}/edit'),
         ];
     }
 }

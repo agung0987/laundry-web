@@ -33,13 +33,7 @@ class KategoriResource extends Resource
             Forms\Components\TextInput::make('satuan')
                 ->required()
                 ->maxLength(255),
-                Forms\Components\Select::make('status')
-                ->label('Status')
-                ->options([
-                    1 => 'Aktif',
-                    0 => 'Tidak Aktif',
-            ]),
-            
+                Forms\Components\Toggle::make('status')
         ]);
     }
 
@@ -50,10 +44,20 @@ class KategoriResource extends Resource
                 Tables\Columns\TextColumn::make('nama')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('satuan')
+                    ->formatStateUsing(function ($state) {
+                        // Apply subscript only to 'Meteran'
+                        if ($state === 'Meteran') {
+                        // Display 'M' followed by subscript '3'
+                                return 'M<sub>3</sub>';
+                            }
+
+                            // For other units, return them as they are
+                            return $state;
+                        })
+                    ->html() // Enable HTML rendering for subscript
                     ->searchable(),
-                Tables\Columns\TextColumn::make('status')
-                    ->label('Status')
-                    ->formatStateUsing(fn ($state) => $state ? 'Aktif' : 'Tidak Aktif'),
+                Tables\Columns\IconColumn::make('status')
+                    ->boolean(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
