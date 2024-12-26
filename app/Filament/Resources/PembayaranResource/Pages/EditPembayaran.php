@@ -9,7 +9,7 @@ use Filament\Resources\Pages\EditRecord;
 class EditPembayaran extends EditRecord
 {
     protected static string $resource = PembayaranResource::class;
-    protected static ?string $title = 'Ubah Status Pembayaran';
+    protected static ?string $title = 'Ubah Pembayaran';
 
 
     protected function getRedirectUrl(): string

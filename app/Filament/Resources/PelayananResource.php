@@ -51,7 +51,6 @@ class PelayananResource extends Resource
                     ->disabled()
                     ->hidden()
                     ->default(fn () => null), 
-                Forms\Components\Toggle::make('status')
             ]);
     }
 
@@ -76,8 +75,6 @@ class PelayananResource extends Resource
                     ->searchable(),
                 Tables\Columns\TextColumn::make('no_pesanan')
                     ->searchable(),
-                Tables\Columns\IconColumn::make('status')
-                    ->boolean(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()

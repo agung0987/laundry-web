@@ -13,13 +13,16 @@ class Pelayanan extends Model
     protected $table = 'pelayanans';
 
     protected $fillable = [
-        'id_pelanggan',
+        'id_pelanggan_pivot_pelayanan',
         'id_pembayaran',
+        'penginputan',
+        'id_layanan',
+        'id_tarif',
         'tanggal_pesanan',
-        'biaya',
-        'penginput',
         'no_pesanan',
-        // 'status',
+        'jumlah',
+        'subtotal',
+        'total',
     ];
 
     protected static function booted()

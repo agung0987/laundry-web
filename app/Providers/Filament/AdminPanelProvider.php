@@ -55,7 +55,7 @@ class AdminPanelProvider extends PanelProvider
             ->authMiddleware([
                 Authenticate::class,
             ])
-            ->plugin(FilamentAccessManagementPanel::make());
-
+            ->plugin(FilamentAccessManagementPanel::make())
+            ->viteTheme('resources/css/filament/admin/theme.css');
     }
 }

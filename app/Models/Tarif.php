@@ -17,8 +17,8 @@ class Tarif extends Model
         // 'status',
     ];
 
-    // public function layanan()
-    // {
-    //     return $this->belongsTo(Layanan::class, 'id_layanan', 'id');
-    // }
+    public function layanan()
+    {
+        return $this->belongsTo(Layanan::class, 'id_layanan', 'id');
+    }
 }

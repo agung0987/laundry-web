@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Filament\Resources\UserResource\Pages;
+namespace App\Filament\Resources\TPengeluaranResource\Pages;
 
-use App\Filament\Resources\UserResource;
+use App\Filament\Resources\TPengeluaranResource;
 use Filament\Actions;
 use Filament\Resources\Pages\CreateRecord;
 
-class CreateUser extends CreateRecord
+class CreateTPengeluaran extends CreateRecord
 {
-    protected static string $resource = UserResource::class;
+    protected static string $resource = TPengeluaranResource::class;
     protected static bool $canCreateAnother = false;
     protected function getRedirectUrl(): string
     {
