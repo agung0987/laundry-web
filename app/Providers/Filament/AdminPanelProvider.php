@@ -25,9 +25,12 @@ class AdminPanelProvider extends PanelProvider
     {
         return $panel
             ->default()
+            ->sidebarCollapsibleOnDesktop(true)
             ->id('admin')
             ->path('admin')
             ->login()
+            ->viteTheme('resources/css/filament/admin/theme.css')
+            ->brandLogo(fn () => view('filament.logo'))
             ->colors([
                 'primary' => Color::Amber,
             ])
@@ -41,7 +44,6 @@ class AdminPanelProvider extends PanelProvider
                 // Widgets\AccountWidget::class,
                 // Widgets\FilamentInfoWidget::class,
             ])
-            ->brandName('Aplikasi Laundry')
             ->middleware([
                 EncryptCookies::class,
                 AddQueuedCookiesToResponse::class,
