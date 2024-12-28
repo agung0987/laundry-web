@@ -14,15 +14,10 @@ return new class extends Migration
         Schema::create('pelayanans', function (Blueprint $table) {
             $table->id();
             $table->foreignId('id_pelanggan_pivot_pelayanan')->constrained('pelanggan_pivot_pelayanans')->cascadeOnDelete();
-            $table->foreignId('id_pembayaran')->constrained('pembayarans')->cascadeOnDelete();
-            $table->foreignId('penginput')->constrained('users')->cascadeOnDelete();
             $table->foreignId('id_layanan')->constrained('layanans')->cascadeOnDelete();
             $table->foreignId('id_tarif')->constrained('tarifs')->cascadeOnDelete();
-            $table->dateTime('tanggal_pesanan');
-            $table->string('no_pesanan');
             $table->integer('jumlah');
             $table->double('subtotal');
-            $table->double('total');
 
             $table->timestamps();
         });

@@ -14,6 +14,11 @@ return new class extends Migration
         Schema::create('pelanggan_pivot_pelayanans', function (Blueprint $table) {
             $table->id();
             $table->foreignId('id_pelanggan')->constrained('pelanggans')->cascadeOnDelete();
+            $table->foreignId('id_pembayaran')->constrained('pembayarans')->cascadeOnDelete();
+            $table->dateTime('tanggal_pesanan');
+            $table->string('penginput');
+            $table->string('no_pesanan');
+            $table->double('total');
             $table->string('status')->nullable();
             $table->timestamps();
         });

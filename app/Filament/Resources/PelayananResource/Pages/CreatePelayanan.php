@@ -24,10 +24,12 @@ class CreatePelayanan extends CreateRecord
 {
     protected static bool $canCreateAnother = false;
     protected static string $resource = PelayananResource::class;
+    protected static ?string $title = 'Pelayanan';
     protected static string $view = 'filament.resources.pelayanan-resource.pages.form-pelayanan';
 
     public function form(Form $form): Form
     {
+
         return $form
             ->schema([
                 Forms\Components\Select::make('id_pelanggan')
@@ -160,23 +162,23 @@ class CreatePelayanan extends CreateRecord
         $no_pesanan_random = 'LUD' . '-' . rand(10, 10000);
         $pelangganPivotPelayanan = new PelangganPivotPelayanan();
         $pelangganPivotPelayanan->id_pelanggan = $data['id_pelanggan'];
+        $pelangganPivotPelayanan->id_pembayaran = $data['id_pembayaran'];
+        $pelangganPivotPelayanan->total = $data['total'];
+        $pelangganPivotPelayanan->tanggal_pesanan = $data['tanggal_pesanan'];
+        $pelangganPivotPelayanan->penginput = Auth::user()->name;
+        $pelangganPivotPelayanan->no_pesanan = $no_pesanan_random;
         $pelangganPivotPelayanan->save();
 
         for ($i = 0; $i < count($data['Table']); $i++) {
             $dataSubmit = new Pelayanan();
-            $dataSubmit->pelanggan_pivot_pelayanan = $pelangganPivotPelayanan->id;
-            $dataSubmit->id_pembayaran = $data['id_pembayaran'];
-            $dataSubmit->penginput = Auth::user()->name;
+            $dataSubmit->id_pelanggan_pivot_pelayanan = $pelangganPivotPelayanan->id;
             $dataSubmit->id_layanan = $data['Table'][$i]['Layanan'];
             $dataSubmit->id_tarif = $data['Table'][$i]['Lama Pengerjaan'];
-            $dataSubmit->tanggal_pesanan = $data['tanggal_pesanan'];
-            $dataSubmit->no_pesanan = $no_pesanan_random;
             $dataSubmit->jumlah = $data['Table'][$i]['Jumlah'];
             $dataSubmit->subtotal = $data['Table'][$i]['Subtotal'];
-            $dataSubmit->total = $data['total'];
             $dataSubmit->save();
         }
 
-        return redirect()->route('filament.resources.pelayanans.index');
+        return redirect('/admin/pelayanans');
     }
 }
